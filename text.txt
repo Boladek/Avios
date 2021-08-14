@@ -1,0 +1,30 @@
+CREATE TABLE  products_varieties(
+    id int AUTO_INCREMENT, 
+    size INT,
+    color VARCHAR(255), 
+    quantity INT,
+    images VARCHAR(255), 
+    price INT, 
+    productId INT, 
+    PRIMARY KEY (id), 
+    CONSTRAINT FK_ProductsVarieties
+    FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+SELECT  t1.*, 
+        t2.*
+
+FROM    Table1 AS t1
+    LEFT JOIN
+        Table2 AS t2
+            ON WHERE t2s.FK_id = t1.PK_id
+
+WHERE   t1.Table1_Title = 'search text'
+   OR   EXISTS
+        ( SELECT  *
+          FROM    Table2 AS t2s
+          WHERE   t2s.FK_id = t1.PK_id
+            AND   t2s.Table2_Title = 'search text'
+        ) ;
+
+select products.*, products_varieties.* FROM products LEFT JOIN products_varieties ON products_varieties.productId = products.id WHERE products.id = 1;
