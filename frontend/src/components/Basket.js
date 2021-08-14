@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Basket(props) {
-    const {cartItems} = props;
+    const {cartItems, setCartItems} = props;
     console.log(props, "props");
     return (
         <div className="basket">
@@ -17,6 +17,12 @@ export default function Basket(props) {
                        <hr></hr>
                        <li>Total price: {cartItems.reduce((a, b) => a.price + b.price) + Math.ceil(cartItems.reduce((a, b) => a.price + b.price) * 0.008)}</li> 
                     </ul>
+                    <div><button 
+                        onClick={() => {
+                            setCartItems([]);
+                        }}>Clear Cart
+                        </button>
+                    </div>
                 </div>}
             </div>
         </div>
