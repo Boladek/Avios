@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
@@ -17,6 +18,7 @@ db.connect((err) => {
     console.log('Connection established');
 })
 
+app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -139,7 +141,7 @@ app.delete('/product/:id', (req, res) => {
     })
 })
 
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 })

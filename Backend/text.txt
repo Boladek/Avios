@@ -11,6 +11,15 @@ CREATE TABLE  products_varieties(
     FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
+CREATE TABLE products (
+    id INT AUTO_INCREMENT NOT NULL, 
+    products_name VARCHAR(255) NOT NULL, 
+    product_description VARCHAR(255) NOT NULL, 
+    date_uploaded DATE NOT NULL, 
+    date_edited DATE, 
+    PRIMARY KEY (id)
+    );
+
 SELECT  t1.*, 
         t2.*
 
@@ -28,3 +37,7 @@ WHERE   t1.Table1_Title = 'search text'
         ) ;
 
 select products.*, products_varieties.* FROM products LEFT JOIN products_varieties ON products_varieties.productId = products.id WHERE products.id = 1;
+
+INSERT INTO products (product_name, product_description, date_uploaded) VALUES ('Samsung ultra 2021', 'The latest Samsung', '2021-08-15'), ('Huawei ultra 2021', 'The latest Huawei', '2021-08-15'), ('One plus ultra 2021', 'The latest One plusUltra', '2021-08-15'), ('Fan 2000', 'The Old Fan', '2021-08-15');
+
+INSERT INTO products_varieties (size, color, quantity, images, price, productId) VALUES ('200', 'Black', '5', 'https://i.gadgets360cdn.com/large/macbook_air_2020_review_cover_1594911114852.jpg?downsize=950:*&output-quality=80&output-format=webp', '600000', '3');
